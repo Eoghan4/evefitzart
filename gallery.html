@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Eve Fitz Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
+    <link rel="icon" href="pictures/other heart.png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: 'Loved by the King', cursive;
+            color: white;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-image: url('pictures/other heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: 120px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-image: url('pictures/other heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.3s ease;
+        }
+
+        .nav-button:hover::before {
+            background-image: url('pictures/one heart.png');
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="index.html"><button class="nav-button">Home</button></a>
+    </div>
+    <h1>Gallery</h1>
+    <div class="gallery">
+        
+        <div class="gallery-item">
+            <img src="gallery/1.jpg" alt="Untitled 1">
+        </div>
+        <div class="gallery-item">
+            <img src="gallery/2.jpg" alt="Untitled 2">
+        </div>
+        <div class="gallery-item">
+            <img src="gallery/3.jpg" alt="Untitled 3">
+        </div>
+        <div class="gallery-item">
+            <img src="gallery/2heartsbeatas1.jpg" alt="Heart">
+        </div>
+        <div class="gallery-item">
+            <img src="gallery/collage.jpg" alt="Collage">
+        </div>
+        <div class="gallery-item">
+            <img src="gallery/normalpeople.jpg" alt="Normal People">
+        </div>
+        
+    </div>
+</body>
+</html> 
