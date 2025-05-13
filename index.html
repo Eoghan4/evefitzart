@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eve Fitz Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
+    <link rel="icon" href="pictures/other heart.png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        #heart-container {
+            position: relative;
+            cursor: pointer;
+            z-index: 2;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #heart {
+            width: 80px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-color: black;
+            z-index: 1;
+        }
+
+        #content.visible {
+            opacity: 1;
+        }
+
+        #base-image {
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+            background: black;
+        }
+
+        .text-content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-align: left;
+            font-family: 'Loved by the King', cursive;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+        }
+
+        h1 {
+            color: #e7e1e1;
+            font-size: 3em;
+            margin: 0;
+            font-family: 'Loved by the King', cursive;
+            display: flex;
+            align-items: center;
+        }
+
+        h1::after {
+            content: '';
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-image: url('pictures/one heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-left: 10px;
+        }
+
+        h3 {
+            color: rgb(216, 211, 211);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        p {
+            color: white;
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-image: url('pictures/other heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: 120px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-image: url('pictures/other heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.3s ease;
+        }
+
+        .nav-button:hover::before {
+            background-image: url('pictures/one heart.png');
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="heart-container">
+        <img src="pictures/one heart.png" alt="Heart" id="heart">
+    </div>
+
+    <div id="content">
+        <img src="pictures/base.png" alt="Base Image" id="base-image">
+        <div class="text-content">
+            <h1>Eve Fitzsimons</h1>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button">Gallery</button>
+            <button class="nav-button">About</button>
+            <button class="nav-button">Contact</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('heart-container').addEventListener('click', function() {
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('content').classList.add('visible');
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
