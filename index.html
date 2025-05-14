@@ -27,14 +27,16 @@
         }
 
         #heart {
-            width: 80px;
+            width: 60px;
             height: auto;
-            animation: pulse 1.5s ease-in-out infinite;
+            animation: heartbeat 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
+        @keyframes heartbeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            20% { transform: scale(1.2); }
+            40% { transform: scale(0.9); }
+            60% { transform: scale(1); }
             100% { transform: scale(1); }
         }
 
@@ -92,6 +94,7 @@
             background-repeat: no-repeat;
             background-position: center;
             margin-left: 10px;
+            animation: heartbeat 2s ease-in-out infinite;
         }
 
         h3 {
@@ -106,6 +109,10 @@
             font-size: 1.2em;
             line-height: 1.6;
             font-family: 'Loved by the King', cursive;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .nav-buttons {
@@ -124,10 +131,6 @@
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            background-image: url('pictures/other heart.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: left center;
             width: 120px;
             height: 40px;
             display: flex;
@@ -153,7 +156,7 @@
 
         .nav-button:hover::before {
             background-image: url('pictures/one heart.png');
-            animation: pulse 1.5s ease-in-out infinite;
+            animation: heartbeat 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -169,8 +172,8 @@
         </div>
         <div class="nav-buttons">
             <a href="gallery.html"><button class="nav-button">Gallery</button></a>
-            <button class="nav-button">About</button>
-            <button class="nav-button">Contact</button>
+            <a href = "about.html"><button class ="nav-button">About</button></a>
+            <a href = "contact.html"><button class="nav-button">Contact</button></a>
         </div>
     </div>
 
