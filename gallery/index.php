@@ -18,160 +18,233 @@ foreach ($images as $img) {
     <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
     <link rel="icon" href="../pictures/other heart.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: black;
-            color: white;
-            font-family: 'Loved by the King', cursive;
+            background: black;
+            color: #e7e1e1;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
         }
 
-        .nav-buttons {
-            position: fixed;
-            top: 20px; right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 100;
-        }
-
-        a { text-decoration: none; }
-
-        .nav-button {
-            background-color: transparent;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            width: 120px; height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            font-family: 'Loved by the King', cursive;
-        }
-
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 40px; height: 40px;
-            background-image: url('../pictures/other heart.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: background-image 0.3s ease;
-        }
-
-        .nav-button:hover::before {
-            background-image: url('../pictures/one heart.png');
-            animation: heartbeat 2s ease-in-out infinite;
-        }
+        a { text-decoration: none; color: inherit; }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            20% { transform: scale(1.2); }
-            40% { transform: scale(0.9); }
-            60% { transform: scale(1); }
+            0%   { transform: scale(1); }
+            20%  { transform: scale(1.2); }
+            40%  { transform: scale(0.9); }
+            60%  { transform: scale(1); }
             100% { transform: scale(1); }
         }
 
-        h1 {
-            text-align: center;
-            font-size: 3em;
-            padding: 80px 20px 20px;
-            color: #e7e1e1;
+        /* ── Nav ── */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        h1::after {
-            content: '';
-            display: inline-block;
-            vertical-align: middle;
-            width: 50px; height: 50px;
-            background-image: url('../pictures/one heart.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-left: 10px;
+        .nav-logo {
+            font-family: 'Loved by the King', cursive;
+            font-size: 1.6rem;
+            color: #e7e1e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-heart {
+            width: 28px; height: 28px;
+            object-fit: contain;
             animation: heartbeat 2s ease-in-out infinite;
         }
 
+        .nav-links { display: flex; gap: 2rem; }
+
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active { color: white; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 600;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-link {
+            font-family: 'Loved by the King', cursive;
+            font-size: 2.5rem;
+            color: #e7e1e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-link:hover { color: white; }
+
+        .mobile-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .site-nav { padding: 1rem 1.25rem; }
+        }
+
+        /* ── Page header ── */
+        .page-header {
+            padding: 7rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Loved by the King', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #e7e1e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-heart {
+            width: 40px; height: 40px;
+            object-fit: contain;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        /* ── Filter nav ── */
         .filter-nav {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            padding: 1.5rem 2rem;
+            gap: 0.6rem;
+            padding: 1.5rem 2rem 2rem;
         }
 
         .filter-btn {
-            padding: 8px 20px;
+            padding: 0.5rem 1.25rem;
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.7);
-            font-family: 'Loved by the King', cursive;
-            font-size: 1em;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.6);
+            font-family: 'Georgia', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
             cursor: pointer;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+            border-radius: 50px;
+            transition: all 0.25s;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
             border-color: white;
             color: white;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
         }
 
+        /* ── Gallery ── */
         .gallery-container {
-            padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 1.5rem 6rem;
         }
 
         .category-section { margin-bottom: 4rem; }
 
         .category-title {
+            font-family: 'Loved by the King', cursive;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: rgba(255,255,255,0.6);
             text-align: center;
-            font-size: 2em;
-            color: #e7e1e1;
-            margin-bottom: 2rem;
             text-transform: capitalize;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
         }
 
         .gallery-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            width: 300px; height: 300px;
+            border-radius: 3px;
+            aspect-ratio: 1/1;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            background: #111;
         }
-
-        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(255,255,255,0.1); }
 
         .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.4s ease;
         }
+
+        .gallery-item:hover img { transform: scale(1.05); }
 
         .gallery-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
+            inset: 0;
+            background: rgba(0,0,0,0.65);
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            padding: 1rem;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -179,92 +252,121 @@ foreach ($images as $img) {
         .gallery-item:hover .gallery-overlay { opacity: 1; }
 
         .overlay-title {
-            color: white;
-            font-size: 1.3em;
-            text-align: center;
             font-family: 'Loved by the King', cursive;
+            font-size: 1.2rem;
+            color: white;
         }
 
+        .empty-gallery {
+            text-align: center;
+            padding: 8rem 2rem;
+            color: rgba(255,255,255,0.3);
+            font-family: 'Loved by the King', cursive;
+            font-size: 1.8rem;
+        }
+
+        /* ── Lightbox ── */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
+            inset: 0;
+            background: rgba(0,0,0,0.96);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .lightbox.active { display: flex; }
 
-        .lightbox-content {
+        .lightbox-inner {
             position: relative;
-            max-width: 90vw;
+            max-width: min(90vw, 1000px);
             max-height: 90vh;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
 
         .lightbox-image {
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 2px;
+            display: block;
         }
 
         .lightbox-title {
             font-family: 'Loved by the King', cursive;
+            font-size: 1.4rem;
             color: #e7e1e1;
-            font-size: 1.5em;
-            margin-top: 1rem;
+            text-align: center;
         }
 
         .lightbox-close {
             position: fixed;
-            top: 1rem; right: 1rem;
-            background: rgba(255,255,255,0.1);
+            top: 1.25rem; right: 1.25rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            width: 40px; height: 40px;
+            width: 42px; height: 42px;
             border-radius: 50%;
+            font-size: 1.3rem;
             cursor: pointer;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s;
+            transition: background 0.2s;
+            line-height: 1;
         }
 
-        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-close:hover { background: rgba(255,255,255,0.18); }
 
-        .empty-gallery {
-            text-align: center;
-            padding: 6rem 2rem;
-            color: rgba(255,255,255,0.5);
-            font-size: 1.5em;
-        }
-
+        /* ── Footer ── */
         footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 2.5rem 2rem;
             text-align: center;
-            padding: 2rem;
-            color: rgba(255,255,255,0.4);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9em;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
 <body>
-    <div class="nav-buttons">
-        <a href="../"><button class="nav-button">Home</button></a>
-        <a href="../about/"><button class="nav-button">About</button></a>
-        <a href="../contact/"><button class="nav-button">Contact</button></a>
+
+    <nav class="site-nav">
+        <a href="../" class="nav-logo">
+            Eve Fitz Art
+            <img src="../pictures/one heart.png" class="logo-heart" alt="">
+        </a>
+        <div class="nav-links">
+            <a href="../gallery/" class="nav-link active">Gallery</a>
+            <a href="../about/" class="nav-link">About</a>
+            <a href="../contact/" class="nav-link">Contact</a>
+        </div>
+        <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+        <a href="../gallery/" class="mobile-link">Gallery</a>
+        <a href="../about/" class="mobile-link">About</a>
+        <a href="../contact/" class="mobile-link">Contact</a>
     </div>
 
-    <h1>Gallery</h1>
+    <div class="page-header">
+        <h1 class="page-title">
+            Gallery
+            <img src="../pictures/one heart.png" class="title-heart" alt="">
+        </h1>
+    </div>
 
     <?php if (empty($images)): ?>
-        <div class="empty-gallery">No images uploaded yet.</div>
+        <div class="empty-gallery">No images yet</div>
     <?php else: ?>
 
     <div class="filter-nav">
@@ -283,7 +385,7 @@ foreach ($images as $img) {
                 <div class="gallery-item" onclick="openLightbox('<?= htmlspecialchars($img['url']) ?>', '<?= htmlspecialchars(addslashes($img['title'])) ?>')">
                     <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['title']) ?>" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 class="overlay-title"><?= htmlspecialchars($img['title']) ?></h3>
+                        <span class="overlay-title"><?= htmlspecialchars($img['title']) ?></span>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -295,7 +397,7 @@ foreach ($images as $img) {
     <?php endif; ?>
 
     <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
+        <div class="lightbox-inner">
             <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
             <img class="lightbox-image" id="lightboxImage" src="" alt="">
             <p class="lightbox-title" id="lightboxTitle"></p>
@@ -305,6 +407,11 @@ foreach ($images as $img) {
     <footer>&copy; 2026 Eve Fitz Art</footer>
 
     <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+            document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+        }
+
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));

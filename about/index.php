@@ -19,139 +19,241 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
     <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
     <link rel="icon" href="../pictures/other heart.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: black;
-            color: white;
-            font-family: 'Loved by the King', cursive;
+            background: black;
+            color: #e7e1e1;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        a { text-decoration: none; }
+        a { text-decoration: none; color: inherit; }
 
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 30px 0 0;
+        @keyframes heartbeat {
+            0%   { transform: scale(1); }
+            20%  { transform: scale(1.2); }
+            40%  { transform: scale(0.9); }
+            60%  { transform: scale(1); }
+            100% { transform: scale(1); }
         }
 
-        .nav-button {
-            background-color: transparent;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            width: 120px; height: 40px;
+        /* ── Nav ── */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 500;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-logo {
             font-family: 'Loved by the King', cursive;
+            font-size: 1.6rem;
+            color: #e7e1e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 40px; height: 40px;
-            background-image: url('../pictures/other heart.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: background-image 0.3s ease;
-        }
-
-        .nav-button:hover::before {
-            background-image: url('../pictures/one heart.png');
+        .logo-heart {
+            width: 28px; height: 28px;
+            object-fit: contain;
             animation: heartbeat 2s ease-in-out infinite;
         }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        .nav-links { display: flex; gap: 2rem; }
+
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
         }
 
-        h1 {
+        .nav-link:hover, .nav-link.active { color: white; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 600;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-link {
+            font-family: 'Loved by the King', cursive;
+            font-size: 2.5rem;
             color: #e7e1e1;
-            font-size: 3em;
-            margin: 2rem 0 1.5rem;
+            text-decoration: none;
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .site-nav { padding: 1rem 1.25rem; }
+        }
+
+        /* ── Page header ── */
+        .page-header {
+            padding: 7rem 2rem 3rem;
             text-align: center;
         }
 
-        h1::after {
-            content: '';
-            display: inline-block;
-            vertical-align: middle;
-            width: 60px; height: 60px;
-            background-image: url('../pictures/one heart.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-left: 10px;
+        .page-title {
+            font-family: 'Loved by the King', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #e7e1e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-heart {
+            width: 40px; height: 40px;
+            object-fit: contain;
             animation: heartbeat 2s ease-in-out infinite;
         }
 
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            max-width: 1000px;
-            padding: 0 2rem 4rem;
+        /* ── About layout ── */
+        .about-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 2rem 6rem;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 5rem;
+            align-items: start;
         }
 
-        .about-photo { flex-shrink: 0; }
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 1rem 1.25rem 5rem;
+            }
+        }
 
-        .about-photo img {
-            width: 300px;
-            height: 375px;
+        .about-photo-wrap {
+            position: sticky;
+            top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-photo-wrap {
+                position: static;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        .about-photo {
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 3/4;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(255,255,255,0.1);
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 280px;
-            max-width: 600px;
+            border-radius: 4px;
+            display: block;
         }
 
         .about-text p {
-            font-size: 1.3em;
-            line-height: 1.7;
-            color: rgb(216, 211, 211);
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 1.4rem;
         }
 
+        .about-text p:last-child { margin-bottom: 0; }
+
+        /* ── Footer ── */
         footer {
-            background: black;
-            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 2.5rem 2rem;
             text-align: center;
-            padding: 2rem;
-            width: 100%;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9em;
-            margin-top: auto;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
 <body>
-    <div class="nav-buttons">
-        <a href="../"><button class="nav-button">Home</button></a>
-        <a href="../gallery/"><button class="nav-button">Gallery</button></a>
-        <a href="../contact/"><button class="nav-button">Contact</button></a>
+
+    <nav class="site-nav">
+        <a href="../" class="nav-logo">
+            Eve Fitz Art
+            <img src="../pictures/one heart.png" class="logo-heart" alt="">
+        </a>
+        <div class="nav-links">
+            <a href="../gallery/" class="nav-link">Gallery</a>
+            <a href="../about/" class="nav-link active">About</a>
+            <a href="../contact/" class="nav-link">Contact</a>
+        </div>
+        <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+        <a href="../gallery/" class="mobile-link">Gallery</a>
+        <a href="../about/" class="mobile-link">About</a>
+        <a href="../contact/" class="mobile-link">Contact</a>
     </div>
 
-    <h1>About Eve</h1>
+    <div class="page-header">
+        <h1 class="page-title">
+            About
+            <img src="../pictures/one heart.png" class="title-heart" alt="">
+        </h1>
+    </div>
 
-    <div class="about-content">
-        <div class="about-photo">
-            <img src="<?= $aboutPhoto ?>" alt="Eve Fitzsimons">
+    <div class="about-section">
+        <div class="about-photo-wrap">
+            <img src="<?= $aboutPhoto ?>" alt="Eve Fitzsimons" class="about-photo">
         </div>
         <div class="about-text">
             <?= $aboutBio ?>
@@ -159,5 +261,12 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
     </div>
 
     <footer>&copy; 2026 Eve Fitz Art</footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+            document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+        }
+    </script>
 </body>
 </html>
