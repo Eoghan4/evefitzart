@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Eve Fitz Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
+    <link rel="icon" href="../pictures/other heart.png" type="image/png">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Loved by the King', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        a { text-decoration: none; color: rgb(216, 61, 61); }
+        a:hover { text-decoration: underline; }
+
+        h1 {
+            color: #e7e1e1;
+            font-size: 3em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1::after {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 60px; height: 60px;
+            background-image: url('../pictures/one heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-left: 10px;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        p { font-size: 1.3em; line-height: 1.6; max-width: 600px; padding: 0 20px; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .nav-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 120px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Loved by the King', cursive;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 40px; height: 40px;
+            background-image: url('../pictures/other heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.3s ease;
+        }
+
+        .nav-button:hover::before {
+            background-image: url('../pictures/one heart.png');
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Me</h1>
+    <p>If you have any questions or would like to get in touch, I can be reached via my Instagram <a href="https://www.instagram.com/eve.fitzart/">@eve.fitzart</a></p>
+
+    <div class="nav-buttons">
+        <a href="../"><button class="nav-button">Home</button></a>
+        <a href="../gallery/"><button class="nav-button">Gallery</button></a>
+        <a href="../about/"><button class="nav-button">About</button></a>
+    </div>
+</body>
+</html>
