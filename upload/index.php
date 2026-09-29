@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $title    = trim($_POST['title'] ?? '');
         $category = trim($_POST['category'] ?? '');
+        $medium   = trim($_POST['medium'] ?? '');
 
         if (empty($title)) {
             $message = "Please provide an image title.";
@@ -91,6 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = "Title is too long (max 255 characters).";
         } elseif (strlen($category) > 100) {
             $message = "Category is too long (max 100 characters).";
+        } elseif (strlen($medium) > 100) {
+            $message = "Medium is too long (max 100 characters).";
         } elseif (!isset($_FILES['image'])) {
             $message = "Please select an image to upload.";
         } else {
@@ -103,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($uploadResult['success']) {
                     try {
-                        $stmt = $conn->prepare("INSERT INTO images (title, category, url) VALUES (?, ?, ?)");
-                        $success = $stmt->execute([$title, $category, $uploadResult['url']]);
+                        $stmt = $conn->prepare("INSERT INTO images (title, category, medium, url) VALUES (?, ?, ?, ?)");
+                        $success = $stmt->execute([$title, $category, $medium, $uploadResult['url']]);
 
                         if ($success) {
                             $message = "Upload successful! Image added to gallery.";
@@ -456,6 +459,11 @@ if (!isset($_SESSION['csrf_token'])) {
                 <div class="form-group">
                     <label for="category">Category</label>
                     <input type="text" id="category" name="category" required placeholder="e.g. portrait, landscape" maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="medium">Medium</label>
+                    <input type="text" id="medium" name="medium" placeholder="e.g. oil on canvas, watercolour, digital" maxlength="100">
                 </div>
 
                 <div class="form-group">

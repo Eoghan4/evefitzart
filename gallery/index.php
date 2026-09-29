@@ -304,6 +304,15 @@ foreach ($images as $img) {
             text-align: center;
         }
 
+        .lightbox-medium {
+            font-family: 'Georgia', serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
         .lightbox-close {
             position: fixed;
             top: 1.25rem; right: 1.25rem;
@@ -382,7 +391,7 @@ foreach ($images as $img) {
             <h2 class="category-title"><?= htmlspecialchars(ucfirst($cat)) ?></h2>
             <div class="gallery-grid">
                 <?php foreach ($imgs as $img): ?>
-                <div class="gallery-item" onclick="openLightbox('<?= htmlspecialchars($img['url']) ?>', '<?= htmlspecialchars(addslashes($img['title'])) ?>')">
+                <div class="gallery-item" onclick="openLightbox('<?= htmlspecialchars($img['url']) ?>', '<?= htmlspecialchars(addslashes($img['title'])) ?>', '<?= htmlspecialchars(addslashes($img['medium'] ?? '')) ?>')">
                     <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['title']) ?>" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="overlay-title"><?= htmlspecialchars($img['title']) ?></span>
@@ -401,6 +410,7 @@ foreach ($images as $img) {
             <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
             <img class="lightbox-image" id="lightboxImage" src="" alt="">
             <p class="lightbox-title" id="lightboxTitle"></p>
+            <p class="lightbox-medium" id="lightboxMedium"></p>
         </div>
     </div>
 
@@ -423,9 +433,12 @@ foreach ($images as $img) {
             });
         });
 
-        function openLightbox(url, title) {
+        function openLightbox(url, title, medium) {
             document.getElementById('lightboxImage').src = url;
             document.getElementById('lightboxTitle').textContent = title;
+            const mediumEl = document.getElementById('lightboxMedium');
+            mediumEl.textContent = medium || '';
+            mediumEl.style.display = medium ? 'block' : 'none';
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }

@@ -272,6 +272,7 @@ foreach ($images as $img) {
                     <th style="width:80px">Photo</th>
                     <th>Title</th>
                     <th>Category</th>
+                    <th>Medium</th>
                     <th style="width:130px">Actions</th>
                 </tr>
             </thead>
@@ -281,6 +282,7 @@ foreach ($images as $img) {
                     <td><img src="<?= htmlspecialchars($img['url']) ?>" class="thumb" alt=""></td>
                     <td><input type="text" class="inline-input img-title" value="<?= htmlspecialchars($img['title']) ?>" maxlength="255"></td>
                     <td><input type="text" class="inline-input img-category" value="<?= htmlspecialchars($img['category']) ?>" maxlength="100"></td>
+                    <td><input type="text" class="inline-input img-medium" value="<?= htmlspecialchars($img['medium'] ?? '') ?>" maxlength="100" placeholder="e.g. oil on canvas"></td>
                     <td>
                         <div class="actions-cell">
                             <button class="btn btn-primary btn-sm save-image-btn">Save</button>
@@ -414,9 +416,10 @@ document.querySelectorAll('.save-image-btn').forEach(btn => {
         const id = row.dataset.id;
         const title = row.querySelector('.img-title').value.trim();
         const category = row.querySelector('.img-category').value.trim();
+        const medium = row.querySelector('.img-medium').value.trim();
         if (!title || !category) { toast('Title and category are required', 'error'); return; }
         btn.disabled = true;
-        const result = await postAction({ action: 'update_image', id, title, category });
+        const result = await postAction({ action: 'update_image', id, title, category, medium });
         btn.disabled = false;
         if (result.success) toast('Image updated');
         else toast(result.error || 'Error', 'error');

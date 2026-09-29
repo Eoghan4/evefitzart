@@ -35,18 +35,19 @@ switch ($action) {
         $id       = (int)($_POST['id'] ?? 0);
         $title    = trim($_POST['title'] ?? '');
         $category = trim($_POST['category'] ?? '');
+        $medium   = trim($_POST['medium'] ?? '');
 
         if (!$id || !$title || !$category) {
             echo json_encode(['success' => false, 'error' => 'Missing fields']);
             exit;
         }
-        if (strlen($title) > 255 || strlen($category) > 100) {
+        if (strlen($title) > 255 || strlen($category) > 100 || strlen($medium) > 100) {
             echo json_encode(['success' => false, 'error' => 'Field too long']);
             exit;
         }
 
-        $stmt = $conn->prepare("UPDATE images SET title = ?, category = ? WHERE id = ?");
-        $stmt->execute([$title, $category, $id]);
+        $stmt = $conn->prepare("UPDATE images SET title = ?, category = ?, medium = ? WHERE id = ?");
+        $stmt->execute([$title, $category, $medium, $id]);
         echo json_encode(['success' => true]);
         break;
 
