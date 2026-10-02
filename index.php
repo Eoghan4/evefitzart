@@ -249,7 +249,7 @@ for ($i = 1; $i <= 3; $i++) {
         }
 
         .hero-text h1 {
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', serif;
             font-size: clamp(2.8rem, 8vw, 5.5rem);
             color: #e7e1e1;
             line-height: 1.1;

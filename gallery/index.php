@@ -167,12 +167,28 @@ ksort($categories);
         }
 
         /* ── Filter nav ── */
-        .filter-nav {
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .filter-row {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 0.6rem;
-            padding: 1.5rem 2rem 2rem;
+        }
+
+        .filter-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            width: 100%;
+            text-align: center;
         }
 
         .filter-btn {
@@ -200,18 +216,6 @@ ksort($categories);
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 1.5rem 6rem;
-        }
-
-        .category-section { margin-bottom: 4rem; }
-
-        .category-title {
-            font-family: 'Georgia', serif;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            text-transform: capitalize;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.03em;
         }
 
         .gallery-grid {
@@ -382,29 +386,42 @@ ksort($categories);
         <div class="empty-gallery">No images yet</div>
     <?php else: ?>
 
-    <div class="filter-nav">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <?php foreach (array_keys($categories) as $cat): ?>
-            <button class="filter-btn" data-filter="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars(ucfirst($cat)) ?></button>
-        <?php endforeach; ?>
+    <div class="filter-group">
+        <div class="filter-row">
+            <span class="filter-label">Category</span>
+            <button class="filter-btn cat-btn active" data-cat="all">All</button>
+            <?php foreach (array_keys($categories) as $cat): ?>
+                <button class="filter-btn cat-btn" data-cat="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars(ucfirst($cat)) ?></button>
+            <?php endforeach; ?>
+        </div>
+        <?php if (!empty($mediums)): ?>
+        <div class="filter-row">
+            <span class="filter-label">Medium</span>
+            <button class="filter-btn med-btn active" data-med="all">All</button>
+            <?php foreach ($mediums as $med): ?>
+                <button class="filter-btn med-btn" data-med="<?= htmlspecialchars($med) ?>"><?= htmlspecialchars(ucfirst($med)) ?></button>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div class="gallery-container">
-        <?php foreach ($categories as $cat => $imgs): ?>
-        <div class="category-section" data-category="<?= htmlspecialchars($cat) ?>">
-            <h2 class="category-title"><?= htmlspecialchars(ucfirst($cat)) ?></h2>
-            <div class="gallery-grid">
+        <div class="gallery-grid">
+            <?php foreach ($categories as $cat => $imgs): ?>
                 <?php foreach ($imgs as $img): ?>
-                <div class="gallery-item" onclick="openLightbox('<?= htmlspecialchars($img['url']) ?>', '<?= htmlspecialchars(addslashes($img['title'])) ?>', '<?= htmlspecialchars(addslashes($img['medium'] ?? '')) ?>')">
+                <div class="gallery-item"
+                     data-cat="<?= htmlspecialchars($cat) ?>"
+                     data-med="<?= htmlspecialchars($img['medium'] ?? '') ?>"
+                     onclick="openLightbox('<?= htmlspecialchars($img['url']) ?>', '<?= htmlspecialchars(addslashes($img['title'])) ?>', '<?= htmlspecialchars(addslashes($img['medium'] ?? '')) ?>')">
                     <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['title']) ?>" loading="lazy">
                     <div class="gallery-overlay">
                         <span class="overlay-title"><?= htmlspecialchars($img['title']) ?></span>
                     </div>
                 </div>
                 <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
+        <p class="empty-gallery" id="noResults" style="display:none">No results</p>
     </div>
 
     <?php endif; ?>
@@ -426,14 +443,37 @@ ksort($categories);
             document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
         }
 
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        let activeCat = 'all';
+        let activeMed = 'all';
+
+        function applyFilters() {
+            const items = document.querySelectorAll('.gallery-item');
+            let visible = 0;
+            items.forEach(item => {
+                const catMatch = activeCat === 'all' || item.dataset.cat === activeCat;
+                const medMatch = activeMed === 'all' || item.dataset.med === activeMed;
+                const show = catMatch && medMatch;
+                item.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+            document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+        }
+
+        document.querySelectorAll('.cat-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                const filter = this.dataset.filter;
-                document.querySelectorAll('.category-section').forEach(sec => {
-                    sec.style.display = (filter === 'all' || sec.dataset.category === filter) ? 'block' : 'none';
-                });
+                activeCat = this.dataset.cat;
+                applyFilters();
+            });
+        });
+
+        document.querySelectorAll('.med-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.med-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeMed = this.dataset.med;
+                applyFilters();
             });
         });
 
