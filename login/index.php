@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .mobile-menu.open { display: flex; }
 
         .mobile-link {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.5rem;
             color: #e7e1e1;
             text-decoration: none;
@@ -183,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .login-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.6rem;
             color: #e7e1e1;
             text-align: center;
@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border: 1px solid rgba(255,255,255,0.18);
             border-radius: 6px;
             color: white;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1rem;
             transition: border-color 0.2s;
         }
@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.3rem;
             cursor: pointer;
             border-radius: 6px;

@@ -146,7 +146,7 @@ if (!isset($_SESSION['csrf_token'])) {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -198,7 +198,7 @@ if (!isset($_SESSION['csrf_token'])) {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -238,7 +238,7 @@ if (!isset($_SESSION['csrf_token'])) {
         .mobile-menu.open { display: flex; }
 
         .mobile-link {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.5rem;
             color: #e7e1e1;
             text-decoration: none;
@@ -271,7 +271,7 @@ if (!isset($_SESSION['csrf_token'])) {
         }
 
         .upload-heading {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(2rem, 5vw, 3rem);
             color: #e7e1e1;
             margin-bottom: 0.4rem;
@@ -334,7 +334,7 @@ if (!isset($_SESSION['csrf_token'])) {
             border: 1px solid rgba(255,255,255,0.18);
             border-radius: 6px;
             color: white;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1rem;
             transition: border-color 0.2s;
         }
@@ -368,7 +368,7 @@ if (!isset($_SESSION['csrf_token'])) {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.3rem;
             cursor: pointer;
             border-radius: 6px;
@@ -387,7 +387,7 @@ if (!isset($_SESSION['csrf_token'])) {
             background: transparent;
             border: 1px solid rgba(200,50,50,0.3);
             color: rgba(255,150,150,0.7);
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.2rem;
             cursor: pointer;
             border-radius: 6px;

@@ -25,7 +25,7 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
         }
 
@@ -75,7 +75,7 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -115,7 +115,7 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
         .mobile-menu.open { display: flex; }
 
         .mobile-link {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.5rem;
             color: #e7e1e1;
             text-decoration: none;
@@ -145,7 +145,7 @@ $aboutBio   = $content['about_bio'] ?? '<p>Eve Fitzsimons is a passionate artist
         }
 
         .page-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
             color: #e7e1e1;
             display: inline-flex;

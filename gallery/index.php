@@ -7,11 +7,11 @@ $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $categories = [];
 $mediums = [];
 foreach ($images as $img) {
-    if ($img['category'] && !in_array($img['category'], $categories)) $categories[] = $img['category'];
-    if ($img['medium']   && !in_array($img['medium'],   $mediums))    $mediums[]    = $img['medium'];
+    $cat = $img['category'] ?? '';
+    if ($cat) $categories[$cat][] = $img;
+    if ($img['medium'] && !in_array($img['medium'], $mediums)) $mediums[] = $img['medium'];
 }
-sort($categories);
-sort($mediums);
+ksort($categories);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ sort($mediums);
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             min-height: 100vh;
         }
 
@@ -78,7 +78,7 @@ sort($mediums);
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -119,7 +119,7 @@ sort($mediums);
         .mobile-menu.open { display: flex; }
 
         .mobile-link {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.5rem;
             color: #e7e1e1;
             text-decoration: none;
@@ -152,7 +152,7 @@ sort($mediums);
         }
 
         .page-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
             color: #e7e1e1;
             display: inline-flex;
@@ -180,7 +180,7 @@ sort($mediums);
             background: transparent;
             border: 1px solid rgba(255,255,255,0.25);
             color: rgba(255,255,255,0.6);
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.85rem;
             letter-spacing: 0.06em;
             cursor: pointer;
@@ -205,7 +205,7 @@ sort($mediums);
         .category-section { margin-bottom: 4rem; }
 
         .category-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(1.6rem, 3vw, 2.2rem);
             color: rgba(255,255,255,0.6);
             text-align: center;
@@ -256,7 +256,7 @@ sort($mediums);
         .gallery-item:hover .gallery-overlay { opacity: 1; }
 
         .overlay-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.2rem;
             color: white;
         }
@@ -265,7 +265,7 @@ sort($mediums);
             text-align: center;
             padding: 8rem 2rem;
             color: rgba(255,255,255,0.3);
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.8rem;
         }
 
@@ -302,14 +302,14 @@ sort($mediums);
         }
 
         .lightbox-title {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.4rem;
             color: #e7e1e1;
             text-align: center;
         }
 
         .lightbox-medium {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.85rem;
             color: rgba(255,255,255,0.45);
             text-align: center;

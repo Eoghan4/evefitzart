@@ -51,7 +51,7 @@ for ($i = 1; $i <= 3; $i++) {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             overflow: hidden;
         }
 
@@ -89,7 +89,7 @@ for ($i = 1; $i <= 3; $i++) {
 
         .entry-hint {
             color: rgba(255,255,255,0.4);
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.85rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -147,7 +147,7 @@ for ($i = 1; $i <= 3; $i++) {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -189,7 +189,7 @@ for ($i = 1; $i <= 3; $i++) {
         .mobile-menu.open { display: flex; }
 
         .mobile-link {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 2.5rem;
             color: #e7e1e1;
             text-decoration: none;
@@ -249,7 +249,7 @@ for ($i = 1; $i <= 3; $i++) {
         }
 
         .hero-text h1 {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(2.8rem, 8vw, 5.5rem);
             color: #e7e1e1;
             line-height: 1.1;
@@ -257,7 +257,7 @@ for ($i = 1; $i <= 3; $i++) {
         }
 
         .hero-text .subtitle {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(0.95rem, 2vw, 1.15rem);
             color: rgba(255,255,255,0.6);
             letter-spacing: 0.08em;
@@ -281,7 +281,7 @@ for ($i = 1; $i <= 3; $i++) {
         }
 
         .section-heading {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: clamp(2rem, 5vw, 3rem);
             color: #e7e1e1;
             text-align: center;
@@ -331,7 +331,7 @@ for ($i = 1; $i <= 3; $i++) {
         .work-item:hover .work-overlay { opacity: 1; }
 
         .work-overlay span {
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 1.6rem;
             color: white;
         }
@@ -343,7 +343,7 @@ for ($i = 1; $i <= 3; $i++) {
             padding: 0.85rem 2.5rem;
             border: 1px solid rgba(255,255,255,0.5);
             color: white;
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.9rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -366,7 +366,7 @@ for ($i = 1; $i <= 3; $i++) {
             padding: 2.5rem 2rem;
             text-align: center;
             color: rgba(255,255,255,0.3);
-            font-family: 'Loved by the King', cursive;
+            font-family: 'Georgia', serif;
             font-size: 0.85rem;
             letter-spacing: 0.05em;
         }
