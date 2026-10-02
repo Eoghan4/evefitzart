@@ -137,7 +137,7 @@ if (!isset($_SESSION['csrf_token'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload - Eve Fitz Art</title>
+    <title>Upload - Eve Fitzsimons</title>
     <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
     <link rel="icon" href="../pictures/other heart.png" type="image/png">
     <style>
@@ -146,7 +146,7 @@ if (!isset($_SESSION['csrf_token'])) {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -198,7 +198,7 @@ if (!isset($_SESSION['csrf_token'])) {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -334,7 +334,7 @@ if (!isset($_SESSION['csrf_token'])) {
             border: 1px solid rgba(255,255,255,0.18);
             border-radius: 6px;
             color: white;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 1rem;
             transition: border-color 0.2s;
         }
@@ -416,7 +416,7 @@ if (!isset($_SESSION['csrf_token'])) {
 
     <nav class="site-nav">
         <a href="../" class="nav-logo">
-            Eve Fitz Art
+            Eve Fitzsimons
             <img src="../pictures/one heart.png" class="logo-heart" alt="">
         </a>
         <div class="nav-links">
@@ -480,7 +480,7 @@ if (!isset($_SESSION['csrf_token'])) {
         </div>
     </div>
 
-    <footer>&copy; 2026 Eve Fitz Art</footer>
+    <footer>&copy; 2026 Eve Fitzsimons</footer>
 
     <script>
         function toggleMenu() {

@@ -5,16 +5,20 @@ $stmt = $conn->query("SELECT * FROM images ORDER BY category, title ASC");
 $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $categories = [];
+$mediums = [];
 foreach ($images as $img) {
-    $categories[$img['category']][] = $img;
+    if ($img['category'] && !in_array($img['category'], $categories)) $categories[] = $img['category'];
+    if ($img['medium']   && !in_array($img['medium'],   $mediums))    $mediums[]    = $img['medium'];
 }
+sort($categories);
+sort($mediums);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Eve Fitz Art</title>
+    <title>Gallery - Eve Fitzsimons</title>
     <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
     <link rel="icon" href="../pictures/other heart.png" type="image/png">
     <style>
@@ -24,7 +28,7 @@ foreach ($images as $img) {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             min-height: 100vh;
         }
 
@@ -74,7 +78,7 @@ foreach ($images as $img) {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -176,7 +180,7 @@ foreach ($images as $img) {
             background: transparent;
             border: 1px solid rgba(255,255,255,0.25);
             color: rgba(255,255,255,0.6);
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.85rem;
             letter-spacing: 0.06em;
             cursor: pointer;
@@ -305,7 +309,7 @@ foreach ($images as $img) {
         }
 
         .lightbox-medium {
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.85rem;
             color: rgba(255,255,255,0.45);
             text-align: center;
@@ -347,7 +351,7 @@ foreach ($images as $img) {
 
     <nav class="site-nav">
         <a href="../" class="nav-logo">
-            Eve Fitz Art
+            Eve Fitzsimons
             <img src="../pictures/one heart.png" class="logo-heart" alt="">
         </a>
         <div class="nav-links">
@@ -414,7 +418,7 @@ foreach ($images as $img) {
         </div>
     </div>
 
-    <footer>&copy; 2026 Eve Fitz Art</footer>
+    <footer>&copy; 2026 Eve Fitzsimons</footer>
 
     <script>
         function toggleMenu() {

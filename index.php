@@ -40,7 +40,7 @@ for ($i = 1; $i <= 3; $i++) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eve Fitz Art</title>
+    <title>Eve Fitzsimons</title>
     <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
     <link rel="icon" href="pictures/other heart.png" type="image/png">
     <style>
@@ -51,7 +51,7 @@ for ($i = 1; $i <= 3; $i++) {
         body {
             background: black;
             color: #e7e1e1;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             overflow: hidden;
         }
 
@@ -89,7 +89,7 @@ for ($i = 1; $i <= 3; $i++) {
 
         .entry-hint {
             color: rgba(255,255,255,0.4);
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.85rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -147,7 +147,7 @@ for ($i = 1; $i <= 3; $i++) {
         .nav-link {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.95rem;
             letter-spacing: 0.05em;
             transition: color 0.2s;
@@ -257,7 +257,7 @@ for ($i = 1; $i <= 3; $i++) {
         }
 
         .hero-text .subtitle {
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: clamp(0.95rem, 2vw, 1.15rem);
             color: rgba(255,255,255,0.6);
             letter-spacing: 0.08em;
@@ -343,7 +343,7 @@ for ($i = 1; $i <= 3; $i++) {
             padding: 0.85rem 2.5rem;
             border: 1px solid rgba(255,255,255,0.5);
             color: white;
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.9rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -366,7 +366,7 @@ for ($i = 1; $i <= 3; $i++) {
             padding: 2.5rem 2rem;
             text-align: center;
             color: rgba(255,255,255,0.3);
-            font-family: 'Georgia', serif;
+            font-family: 'Loved by the King', cursive;
             font-size: 0.85rem;
             letter-spacing: 0.05em;
         }
@@ -385,7 +385,7 @@ for ($i = 1; $i <= 3; $i++) {
 
         <nav class="site-nav">
             <a href="./" class="nav-logo">
-                Eve Fitz Art
+                Eve Fitzsimons
                 <img src="pictures/one heart.png" class="logo-heart" alt="">
             </a>
             <div class="nav-links">
@@ -436,7 +436,7 @@ for ($i = 1; $i <= 3; $i++) {
             </div>
         </section>
 
-        <footer>&copy; 2026 Eve Fitz Art</footer>
+        <footer>&copy; 2026 Eve Fitzsimons</footer>
 
     </div><!-- #content -->
 
